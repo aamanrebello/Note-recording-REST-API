@@ -48,7 +48,7 @@ PERSONAL NOTE TAKER API
  **REQUIREMENTS**
  -
  1. Python 3.x (modules *pyodbc, os, shutil, flask* must be installed)
- 2. Microsoft Access (Databases are stored in 2002 - 2003 format) - can be changed to another DB engine by modifying the*dbconfig* field in *config.txt* (I think only this is required). This field basically provides information to set up a pyodbc connection to the database being used. 
+ 2. Microsoft Access (Databases are stored in 2002 - 2003 format) - can be changed to another DB engine by modifying the *dbconfig* field in *config.txt*. The field basically provides information to set up a pyodbc connection to the database being used - see its usage in *common_functions.py* and *modify_db.py*. 
 
 
  **HOW TO USE**
