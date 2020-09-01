@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+chmod a+x runall
+
+python personalnotes_get.py &
+python personalnotes_post.py &
+python personalnotes_user.py &
+python personalnotes_delete.py &
+python personalnotes_update.py &
+python personalnotes_archive.py &
+
+echo "DONE!"
