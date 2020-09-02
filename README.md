@@ -8,19 +8,20 @@ PERSONAL NOTE TAKER API
  Notes are stored in *text files*. Each user has his/her own folder in which his/her notes are stored.  All users' names and ID's are listed on a *.mdb* (Microsoft Access) database. All of these storage files/folders are stored in a parent folder called "Storage".
 
 
-**CHOICE OF TECHNOLOGY**
+**ABOUT THE PROJECT**
 -
- - The API is written in Python. It uses the *Flask* module to create the API. In general, across online forums, many people agree that Python (a language I know) was one of the best languages to write an API, using the *Django* framework or *Flask* module. I chose *Flask* as there are more documentation/tutorials available. Django also has a tendency to be problematic.
+ - The API is written in Python. It uses the *Flask* framework to create the API. 
 
  - It stores personal notes as *.txt* files. This is because *.txt* files are easier to manipulate and manage, and cheaper to store, than other data structures like databases. They can be compressed, archived, or put on *AWS* services like *S3* more easily. Python dictionaries etc. do not provide the same capability for storage.
 
- - User details (Name, User ID) and records of notes and archives are stored in a Microsoft Access *.mdb* database. A database is well suited, because it can store a large amount of formatted data in one place. They make it easier to search items. Databases can also be encrypted, to secure data. Microsoft Access is probably not the best choice of engine, but it was chosen for ease of implementation. The engine can easily be changed by suitable modifications.
+ - User details (Name, User ID) and records of notes and archives are stored in a Microsoft Access *.mdb* database. . Microsoft Access is probably not the best choice of engine,  but it was chosen for ease of implementation. The engine can easily be changed by suitable modifications.
 
- - The *__init__.py* file provides the usual function of making the *Python_API* module importable.
-
- - For posting, updating and creating new users, data (e.g. the personal note) is sent from a client program as a *json* file.
+ - For posting, updating notes and creating new users, necessary data is sent from a client program via *json*.
 
  - Each functionality e.g. listing notes, saving new notes etc. is in a separate API in a separate *.py* file. The programs listen on different ports. This makes the application more conducive to scaling up and adding new functionality.
+ 
+ - Below is an architectural overview of the API (note the data model used in the database):
+                       ![image](https://user-images.githubusercontent.com/56508438/92012205-10954b00-ed44-11ea-8666-c239b13e1602.png)
 
 
  **FILES AND FOLDERS**
