@@ -13,7 +13,9 @@ app = Flask(__name__)
 api = Api(app)
 
 class ARCHIVE():
-    @app.route("/archive/send/<UserID>/<topic>", methods = ['PUT', 'GET'])
+
+    # USED TO MOVE A GIVEN TEXT FILE TO ARCHIVED STORAGE (CONVERTS TO .gzip format).
+    @app.route("/send/<UserID>/<topic>", methods = ['PUT'])
     def move_to_archive(UserID, topic):
         file_to_search = str(topic) + ".txt" #BASE DEFINITIONS
         common_obj = common()
@@ -41,7 +43,8 @@ class ARCHIVE():
             return "404: file not found", 404
 
 
-    @app.route("/archive/recall/<UserID>/<topic>", methods = ['PUT', 'GET'])
+    # USED TO RECALL ARCHIVED FILE TO MAIN STORAGE (CONVERTS FROM .gzip TO .txt)
+    @app.route("/recall/<UserID>/<topic>", methods = ['PUT'])
     def recall_archive(UserID, topic):
         file_to_search = str(topic) + ".txt" #BASE DEFINITIONS
         common_obj = common()

@@ -8,8 +8,10 @@ app = Flask(__name__)
 api = Api(app)
 
 class GET():
-    @app.route("/list_notes/<UserID>", methods = ['GET'])
-    def get(UserID): #lists all the notes
+
+    # PROVIDES DATA REGARDING ALL USER NOTES AND ARCHIVES AS JSON RESPONSE.
+    @app.route("/<UserID>", methods = ['GET'])
+    def get(UserID): 
         common_obj = common()
         info = common.get_info(common_obj)
         info_dict = literal_eval(info)  #CONVERT TO DICTIONARY

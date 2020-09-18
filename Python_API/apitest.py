@@ -4,10 +4,9 @@ import json
 # TESTS THE POSTING API
 entry1 = {
     "topic" : "test1",
-    "content" : "I think I'm Ok!",
-    "userID" : "000088"
+    "content" : "I think I'm Ok!"
 }
-r = requests.post('http://127.0.0.1:5003/add_note', json = entry1)
+r = requests.post('http://127.0.0.1:5003/000088', json = entry1)
 print(r.url)
 print(r.text)
 #entry2 = {
@@ -46,20 +45,18 @@ print(r.text)
 #print(r.text)
 
 # TESTS THE UPDATE API
-#new_entry_or_addition1 = {
-#    "topic" : "test1",
-#    "content" : " Take the dog for a walk, ",
-#    "userID" : "000088"
-#}
-#s = requests.put('http://127.0.0.1:5006/update/prepend', json = new_entry_or_addition1)
-#print(s.url)
-#print(s.text)
+new_entry_or_addition1 = {
+    "topic" : "test1",
+    "content" : " Take the dog for a walk, "
+}
+s = requests.put('http://127.0.0.1:5006/000088/prepend', json = new_entry_or_addition1)
+print(s.url)
+print(s.text)
 #new_entry_or_addition2 = {
-#    "topic" : "test51",
-#    "content" : " Yea, I'm good. ",
-#    "userID" : "345678"
+#    "topic" : "test1",
+#    "content" : " Yea, I'm good. "
 #}
-#s = requests.put('http://127.0.0.1:5006/update/append', json = new_entry_or_addition2)
+#s = requests.put('http://127.0.0.1:5006/000088/append', json = new_entry_or_addition2)
 #print(s.url)
 #print(s.text)
 #new_entry_or_addition3 = {
@@ -71,11 +68,10 @@ print(r.text)
 #print(s.url)
 #print(s.text)
 #new_entry_or_addition4 = {
-#    "topic" : "test3",
-#    "content" : " I hate them.",
-#    "userID" : "565800"
+#    "topic" : "test1",
+#    "content" : " I hate them."
 #}
-#s = requests.put('http://127.0.0.1:5006/update/rewrite', json = new_entry_or_addition4)
+#s = requests.put('http://127.0.0.1:5006/000088/rewrite', json = new_entry_or_addition4)
 #print(s.url)
 #print(s.text)
 #new_entry_or_addition5 = {
@@ -93,7 +89,7 @@ new_user1 = {
     'username' : 'Za',
     'userID' : '000088'
 }
-t = requests.post('http://127.0.0.1:5004/user/create', json = new_user1)
+t = requests.post('http://127.0.0.1:5004/', json = new_user1)
 print(t.url)
 print(t.text)
 

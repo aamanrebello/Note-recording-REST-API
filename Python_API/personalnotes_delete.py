@@ -9,7 +9,9 @@ app = Flask(__name__)
 api = Api(app)
 
 class DELETE():
-    @app.route("/delete/note/<UserID>/<topic>", methods = ['DELETE', 'GET'])
+
+    # USED TO DELETE PERSONAL TEXT NOTE FOR A USER.
+    @app.route("/note/<UserID>/<topic>", methods = ['DELETE'])
     def delete_note(UserID, topic):
         file_to_search = str(topic) + ".txt"
         common_obj = common()
@@ -31,7 +33,8 @@ class DELETE():
             return "404 : file could not be found", 404
 
 
-    @app.route("/delete/archive/<UserID>/<topic>", methods = ['DELETE', 'GET'])
+    # USED TO DELETE ARCHIVED NOTE FOR A USER.
+    @app.route("/archive/<UserID>/<topic>", methods = ['DELETE'])
     def delete_archive(UserID, topic):
         file_to_search = str(topic) + ".txt"
         common_obj = common()

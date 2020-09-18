@@ -9,11 +9,12 @@ app = Flask(__name__)
 api = Api(app)
 
 class UPDATE():
-    @app.route('/update/rewrite', methods = ['PUT', 'GET'])
-    def rewrite_file():
+
+    # USED TO REWRITE AN EXISTING NOTE OF A USER.
+    @app.route('/<UserID>/rewrite', methods = ['PUT'])
+    def rewrite_file(UserID):
         new_note = request.json["content"]
         topic = request.json["topic"]
-        UserID = request.json["userID"]
 
         index = 0
         file_found = False
@@ -36,12 +37,11 @@ class UPDATE():
             return "404: file not found", 404
 
 
-
-    @app.route('/update/append', methods = ['PUT', 'GET'])
-    def append():
+    # USED TO APPEND TEXT TO AN EXISTING NOTE OF A USER.
+    @app.route('/<UserID>/append', methods = ['PUT'])
+    def append(UserID):
         addition = request.json["content"]
         topic = request.json["topic"]
-        UserID = request.json["userID"]
 
         index = 0
         file_found = False
@@ -59,17 +59,16 @@ class UPDATE():
             f = open((base_path + "Storage/" + UserID + "_notes/" + file_to_search), "a+")
             f.write(addition)
             f.close()
-            return "201 : file updated", 201
+            return "201: file updated", 201
         else:
-            return "404 : file not found", 404
+            return "404: file not found", 404
 
 
-
-    @app.route('/update/prepend', methods = ['PUT', 'GET'])
-    def prepend():
+    # USED TO PREPEND TEXT TO AN EXISTING NOTE OF A USER.
+    @app.route('/<UserID>/prepend', methods = ['PUT'])
+    def prepend(UserID):
         addition = request.json["content"]
         topic = request.json["topic"]
-        UserID = request.json["userID"]
 
         index = 0
         file_found = False
@@ -89,9 +88,9 @@ class UPDATE():
             f.seek(0)
             f.write(addition + " " + old)
             f.close()
-            return "201 : file updated", 201
+            return "201: file updated", 201
         else:
-            return "404 : file not found", 404
+            return "404: file not found", 404
 
 
 if __name__ == '__main__':

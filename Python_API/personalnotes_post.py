@@ -10,11 +10,12 @@ app = Flask(__name__)
 api = Api(app)
 
 class POST_NOTE():
-    @app.route("/add_note" , methods = ['POST', 'GET'])
-    def post():
+
+    # USED TO ADD A NEW NOTE FOR A USER.
+    @app.route("/<UserID>" , methods = ['POST'])
+    def post(UserID):
         note = request.json["content"]
-        topic = request.json["topic"]
-        UserID = request.json["userID"] #RECEIVE DATA AS JSON
+        topic = request.json["topic"] #RECEIVE DATA AS JSON
 
         common_obj = common()
         info = common.get_info(common_obj)
@@ -27,7 +28,7 @@ class POST_NOTE():
 
         Notes = common.getnotes(common_obj, DBconfig, base_path, UserID)
         if str(topic + ".txt") in Notes:
-            return "404: Note already exists - to edit/delete please use the rewrite functionality.", 404
+            return "404: Note already exists - to edit/delete please use the rewrite/delete functionality.", 404
         Archives = common.getarchives(common_obj, DBconfig, base_path, UserID)
         if str(topic + ".txt") in Archives:
             return "404: Note with same filename exists in archives. Recommended: add \'(n)\' after filename where n is version number.", 404

@@ -10,7 +10,9 @@ app = Flask(__name__)
 api = Api(app)
 
 class THE_USER():
-    @app.route("/user/create" , methods = ['POST', 'GET'])
+
+    # ADDS A NEW USER TO DB AND STORAGE.
+    @app.route("/" , methods = ['POST'])
     def create_user():
         Uname = request.json["username"]
         Identification = request.json["userID"]
@@ -33,7 +35,8 @@ class THE_USER():
                 return "403: ID already exists, provide different ID", 403
 
 
-    @app.route("/user/delete/<UserID>" , methods = ['POST', 'GET'])
+    # REMOVES USER FROM DB AND STORAGE.
+    @app.route("/<UserID>" , methods = ['DELETE'])
     def remove_user(UserID):
         common_obj = common()
         info = common.get_info(common_obj)
